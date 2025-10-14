@@ -4,8 +4,8 @@ from .io.csvio import read_students_from_csv, write_students_to_csv
 
 def build_default_gradebook():
     gb = GradeBook()
-    gb.add_student(Student("Alice", [90, 85, 92]))
-    gb.add_student(Student("Bob",   [70, 75, 68]))
+    gb.add_student(Student("junhyeog", [90, 85, 92]))
+    gb.add_student(Student("junsang",   [70, 75, 68]))
     return gb
 
 def print_report(gb):
@@ -29,5 +29,3 @@ def main():
     if args.export:
         write_students_to_csv(args.export, gb.students)
         print(f"[saved] {args.export}")
-
-# touch: 2025-10-14 14:30:44
