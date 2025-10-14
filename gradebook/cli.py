@@ -1,6 +1,6 @@
 ﻿import argparse
 from .models import Student, GradeBook
-from .io.csvio import read_students_from_csv
+from .io.csvio import read_students_from_csv, write_students_to_csv
 
 def build_default_gradebook():
     gb = GradeBook()
@@ -16,6 +16,7 @@ def print_report(gb):
 def main():
     parser = argparse.ArgumentParser(description="GradeBook CLI")
     parser.add_argument("--csv", help="학생 데이터 CSV 경로 (예: data/students.csv)")
+    parser.add_argument("--export", help="결과를 CSV로 저장 (예: data/out.csv)")
     args = parser.parse_args()
 
     if args.csv:
@@ -24,3 +25,7 @@ def main():
         gb = build_default_gradebook()
 
     print_report(gb)
+
+    if args.export:
+        write_students_to_csv(args.export, gb.students)
+        print(f"[saved] {args.export}")
